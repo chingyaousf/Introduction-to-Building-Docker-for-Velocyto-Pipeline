@@ -1,0 +1,7 @@
+version: '3'
+services:
+  velocyto-app:
+    image: velocyto_app:latest
+    container_name: velocyto_container
+    volumes:
+      - ./app:/app
