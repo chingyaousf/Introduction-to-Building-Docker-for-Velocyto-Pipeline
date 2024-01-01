@@ -18,7 +18,7 @@ The Docker image provided in this repository is tailored for the analysis of a s
 
 ### **Dockerfile**
 
-``` Dockerfile
+``` dockerfile
 FROM ubuntu:22.04
 
 # Maintainer information
@@ -62,37 +62,95 @@ RUN pip3 install numpy scipy cython numba matplotlib scikit-learn h5py click
 RUN pip3 install velocyto==${VELOCYTO_VERSION}
 
 # Copy script and data files into the container
-COPY app/sample/barcodes.tsv /app/sample/
-COPY app/sample/frozen_pbmc_donor_a_possorted_genome_bam.bam /app/sample/
-COPY app/genes.gtf /app/
+COPY app_03/sample/barcodes.tsv /app/sample/
+COPY app_03/sample/frozen_pbmc_donor_a_possorted_genome_bam.bam /app/sample/
+COPY app_03/genes.gtf /app/
+#COPY app/sample/cellsorted_frozen_pbmc_donor_a_possorted_genome_bam.bam /app/sample/
 
 # Sort the BAM file using samtools
-RUN samtools sort -o /app/sample/cellsorted_frozen_pbmc_donor_a_possorted_genome_bam.bam /app/sample/frozen_pbmc_donor_a_possorted_genome_bam.bam
+#RUN samtools sort -o /app/sample/cellsorted_frozen_pbmc_donor_a_possorted_genome_bam.bam /app/sample/frozen_pbmc_donor_a_possorted_genome_bam.bam
+RUN samtools sort -l 7 -m 1024M -t CB -O BAM -@ 4 -o /app/sample/cellsorted_frozen_pbmc_donor_a_possorted_genome_bam.bam /app/sample/frozen_pbmc_donor_a_possorted_genome_bam.bam
 
 ENTRYPOINT ["velocyto"]
 #CMD ["--help"]
 
 # Specify the default command
 CMD ["run", "-b", "sample/barcodes.tsv", "-o", "velocyto_output", "sample/frozen_pbmc_donor_a_possorted_genome_bam.bam", "genes.gtf"]
-
-
 ```
 
-### **Building the Docker Image**
+### **Running the Docker Container Using Docker Desktop and Windows cmd**:
 
-To build the Docker image, use the following command:
+To embark on Building Docker for Velocyto, we encourage you to install Docker Desktop on your system. Once you've installed Docker Desktop, you can build the Docker image and run the container with the following simple steps:
 
-``` bash
+#### **Velocyto Docker Setup:**
+
+**1. Install Docker Desktop**: Download and install Docker Desktop for your operating system from the official Docker website ([https://www.docker.com/products/docker-desktop).](https://www.docker.com/products/docker-desktop).)
+
+**2. Build the Docker Image**:
+
+-   Clone the Docker project repository from its source.
+
+    Click github.dev
+
+    ![](https://github.com/chingyaousf/Introduction-to-Building-Docker-for-Velocyto-Pipeline/blob/main/data/Velocyto%20Docker%20Desktop%20images_01.png?raw=true)
+
+    Download Docker folder
+
+    ![](https://github.com/chingyaousf/Introduction-to-Building-Docker-for-Velocyto-Pipeline/blob/main/data/Velocyto%20Docker%20Desktop%20images_02.png?raw=true)
+
+-   Open Windows command prompt and navigate to the directory containing the Dockerfie.
+
+```         
+C:\>cd C:\Users\Administrator\Desktop\Docker
+```
+
+-   Use the `docker build` command to build the Docker image. For example:
+
+```         
 docker build -t velocyto_app .
 ```
 
-### **Running the Docker Container**
+**3. Run the Docker Container**:
 
-To run the Docker container interactively, use the following command:
+-   Once the Docker image is successfully built, you can run the image using **Docker Desktop**.
 
-``` bash
-docker run -it velocyto_app:latest 
-```
+    ![](https://github.com/chingyaousf/Introduction-to-Building-Docker-for-Velocyto-Pipeline/blob/main/data/Velocyto%20Docker%20Desktop%20images_03.png?raw=true)
+
+    ![](https://github.com/chingyaousf/Introduction-to-Building-Docker-for-Velocyto-Pipeline/blob/main/data/Velocyto%20Docker%20Desktop%20images_04.png?raw=true)
+
+    ![](https://github.com/chingyaousf/Introduction-to-Building-Docker-for-Velocyto-Pipeline/blob/main/data/Velocyto%20Docker%20Desktop%20images_05.png?raw=true)
+
+-   Run the image using **Windows cmd**
+
+    command:
+
+    ```         
+    docker run -it velocyto_app:latest
+    ```
+
+Once the container has finished running, you should be able to access **loom** output file inside the **'app/velocyto_output'** folder of the downloaded Docker repository.
+
+**4. Use Docker Compose for Building and Running**:
+
+-   Create a Docker Compose YAML file in the Docker project directory (already included in the Docker file).
+
+-   Inside the YAML file, specify the services, image names, ports, and other configurations.
+
+-   Use **`docker-compose build`** to build the image based on the YAML file. You can run this command on Windows command prompt whenever the Dockerfile is modified to update the image.
+
+-   Use **`docker-compose up`** to run the container based on the built image. This is also used to start the container whenever needed.
+
+-   To remove the container and associated resources, use **`docker-compose down`**.
+
+The Docker container is configured to run Velocyto app, ensuring that you can efficiently produce **loom** output file with ease and consistency. This setup allows for conveniently producing loom output file. Remember that you can run `docker-compose build` or `docker-compose up` every time you modify the Dockerfile to update the image and keep your analysis environment up to date. Please refer to the **Docker Desktop Learning Center** and **Docker Compose documentation** for comprehensive guidance on using these tools effectively.
+
+### **Running the Docker Container in HPC**:
+
+-   Clone the Docker project repository from its source.
+
+-   Refer instruction Podman (Docker), and Singularity (Apptainer) HPC Guide
+
+    <https://github.com/chingyaousf/Simple-Podman-Docker-and-Singularity-Apptainer-HPC-Guide>
 
 **Note:** Ensure that the necessary data files are available in the appropriate paths inside the container as specified in the Dockerfile.
 
@@ -107,5 +165,7 @@ Feel free to explore and adapt the Dockerfile and associated commands based on y
 ### References
 
 <https://velocyto.org/velocyto.py/index.html#>
+
+<https://github.com/chingyaousf/Simple-Podman-Docker-and-Singularity-Apptainer-HPC-Guide>
 
 <https://github.com/hisplan/docker-velocyto/blob/master/Dockerfile>
