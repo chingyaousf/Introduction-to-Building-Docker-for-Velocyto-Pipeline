@@ -84,7 +84,7 @@ To embark on Building Docker for Velocyto, we encourage you to install Docker De
 
 #### **Velocyto Docker Setup:**
 
-**1. Install Docker Desktop**: Download and install Docker Desktop for your operating system from the official Docker website ([https://www.docker.com/products/docker-desktop).](https://www.docker.com/products/docker-desktop).)
+**1. Install Docker Desktop**: Download and install Docker Desktop for your operating system from the official Docker website (<https://www.docker.com/products/docker-desktop>)
 
 **2. Build the Docker Image**:
 
@@ -150,7 +150,7 @@ The Docker container is configured to run Velocyto app, ensuring that you can ef
 
 -   Refer instruction Podman (Docker), and Singularity (Apptainer) HPC Guide
 
-    <https://github.com/chingyaousf/Simple-Podman-Docker-and-Singularity-Apptainer-HPC-Guide>
+    (<https://github.com/chingyaousf/Simple-Podman-Docker-and-Singularity-Apptainer-HPC-Guide>)
 
 **Note:** Ensure that the necessary data files are available in the appropriate paths inside the container as specified in the Dockerfile.
 
