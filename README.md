@@ -98,6 +98,16 @@ To embark on Building Docker for Velocyto, we encourage you to install Docker De
 
     ![](https://github.com/chingyaousf/Introduction-to-Building-Docker-for-Velocyto-Pipeline/blob/main/data/Velocyto%20Docker%20Desktop%20images_02.png?raw=true)
 
+Construct Docker project repository
+
+Download the .gtf file for Human reference (GRCh38) - 2020-A and decompress it in Docker/app/. <https://www.10xgenomics.com/support/software/cell-ranger/downloads>
+
+Download the Gene/Cell matrix (filtered) file and decompress it in Docker/app/sample/. We need the barcodes file. <https://support.10xgenomics.com/single-cell-gene-expression/datasets/1.1.0/frozen_pbmc_donor_a>
+
+Download the Genome-aligned BAM file and decompress it in Docker/app/sample/. We need the frozen_pbmc_donor_a_possorted_genome_bam.bam file. <https://support.10xgenomics.com/single-cell-gene-expression/datasets/1.1.0/frozen_pbmc_donor_a>
+
+**Note:** Ensure that the necessary data files are available in the appropriate paths inside the container as specified in the Dockerfile. Feel free to explore and adapt the Dockerfile and associated commands based on your specific requirements and dataset.
+
 -   Open Windows command prompt and navigate to the directory containing the Dockerfie.
 
 ```         
@@ -152,13 +162,11 @@ The Docker container is configured to run Velocyto app, ensuring that you can ef
 
     (<https://github.com/chingyaousf/Simple-Podman-Docker-and-Singularity-Apptainer-HPC-Guide>)
 
-**Note:** Ensure that the necessary data files are available in the appropriate paths inside the container as specified in the Dockerfile.
-
-Feel free to explore and adapt the Dockerfile and associated commands based on your specific requirements and dataset.
-
 ### Blog
 
 ### Data source
+
+<https://www.10xgenomics.com/support/software/cell-ranger/downloads>
 
 <https://support.10xgenomics.com/single-cell-gene-expression/datasets/1.1.0/frozen_pbmc_donor_a>
 
