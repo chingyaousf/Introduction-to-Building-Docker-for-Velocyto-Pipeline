@@ -164,6 +164,8 @@ The Docker container is configured to run Velocyto app, ensuring that you can ef
 
 ### Blog
 
+<https://ssidmarine.wordpress.com/2024/01/01/introduction-to-building-docker-for-velocyto-pipeline/>
+
 ### Data source
 
 <https://www.10xgenomics.com/support/software/cell-ranger/downloads>
