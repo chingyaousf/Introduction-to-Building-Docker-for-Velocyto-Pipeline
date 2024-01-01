@@ -94,11 +94,11 @@ To embark on Building Docker for Velocyto, we encourage you to install Docker De
 
     ![](https://github.com/chingyaousf/Introduction-to-Building-Docker-for-Velocyto-Pipeline/blob/main/data/Velocyto%20Docker%20Desktop%20images_01.png?raw=true)
 
-    Download Docker folder
+    Download Docker folder as working directory and file path.
 
     ![](https://github.com/chingyaousf/Introduction-to-Building-Docker-for-Velocyto-Pipeline/blob/main/data/Velocyto%20Docker%20Desktop%20images_02.png?raw=true)
 
--   Construct Docker project repository
+-   Construct Docker project repository.
 
 Download the .gtf file for Human reference (GRCh38) - 2020-A and decompress it in Docker/app/. <https://www.10xgenomics.com/support/software/cell-ranger/downloads>
 
