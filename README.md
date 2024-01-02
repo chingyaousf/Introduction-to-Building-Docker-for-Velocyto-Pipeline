@@ -158,6 +158,8 @@ The Docker container is configured to run Velocyto app, ensuring that you can ef
 
 -   Clone the Docker project repository from its source.
 
+-   Construct Docker project repository.
+
 -   Refer instruction Podman (Docker), and Singularity (Apptainer) HPC Guide
 
     (<https://github.com/chingyaousf/Simple-Podman-Docker-and-Singularity-Apptainer-HPC-Guide>)
