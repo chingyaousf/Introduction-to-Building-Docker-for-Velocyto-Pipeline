@@ -62,9 +62,9 @@ RUN pip3 install numpy scipy cython numba matplotlib scikit-learn h5py click
 RUN pip3 install velocyto==${VELOCYTO_VERSION}
 
 # Copy script and data files into the container
-COPY app_03/sample/barcodes.tsv /app/sample/
-COPY app_03/sample/frozen_pbmc_donor_a_possorted_genome_bam.bam /app/sample/
-COPY app_03/genes.gtf /app/
+COPY app/sample/barcodes.tsv /app/sample/
+COPY app/sample/frozen_pbmc_donor_a_possorted_genome_bam.bam /app/sample/
+COPY app/genes.gtf /app/
 #COPY app/sample/cellsorted_frozen_pbmc_donor_a_possorted_genome_bam.bam /app/sample/
 
 # Sort the BAM file using samtools
