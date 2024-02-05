@@ -138,6 +138,12 @@ docker build -t velocyto_app .
     docker run -it velocyto_app:latest
     ```
 
+    or using **docker-compose** file command:
+
+    ```         
+    docker-compose up
+    ```
+
 Once the container has finished running, you should be able to access **loom** output file inside the **'app/velocyto_output'** folder of the downloaded Docker repository.
 
 **4. Use Docker Compose for Building and Running**:
