@@ -117,7 +117,7 @@ C:\>cd C:\Users\Administrator\Desktop\Docker
 -   Use the `docker build` command to build the Docker image. For example:
 
 ```         
-docker build -t velocyto_app .
+C:\Users\Administrator\Desktop\Docker> docker build -t velocyto_app .
 ```
 
 **3. Run the Docker Container**:
@@ -135,13 +135,13 @@ docker build -t velocyto_app .
     command:
 
     ```         
-    docker run -it velocyto_app:latest
+    C:\Users\Administrator\Desktop\Docker> docker run -it velocyto_app:latest
     ```
 
     or using **docker-compose** file command:
 
     ```         
-    docker-compose up
+    C:\Users\Administrator\Desktop\Docker> docker-compose up
     ```
 
 Once the container has finished running, you should be able to access **loom** output file inside the **'app/velocyto_output'** folder of the downloaded Docker repository.
